@@ -31,3 +31,5 @@ Just use the shortcode [bbpressliketopics_withlike postID = <postID>] to show ho
 * Launch!
 = 0.2 =
 * Small fixes and improves on the shortcodes
+= 0.2.1 =
+* Organizational changes
