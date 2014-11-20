@@ -1,4 +1,4 @@
-=== Leoni BBPress Like Topics ===
+=== BBPress Like Topics ===
 Contributors: eduardo-leoni
 Tags: BBPress, Likes, Topics
 Requires at least: 3.5.1
