@@ -21,8 +21,7 @@ function addToFavorites($userID, $postID){
     global $wpdb;
     
     $wpdb->insert($wpdb->prefix . "bbpress_likes", array("post_id"=>$postID, "user_id"=>$userID));
-   
-    
+  
 }
 
 function getFavorites($postID){
@@ -41,6 +40,16 @@ function getBar($postID){
     ?>
         <span class ="likes_bbpress"> 
             <span class = "counter"><?php echo getFavorites($postID); ?></span>
+        </span>
+    <?php
+    
+}
+
+function getBar_withLike($postID){
+   
+    ?>
+        <span class ="likes_bbpress"> 
+            <span class = "counter"><?php echo getFavorites($postID); ?></span>
             <?php if (!get_current_user_id()): ?>
                 <span class = "login_to_like"><a href = "#">Login to Like</a></span>
             <?php else: ?>
@@ -52,10 +61,15 @@ function getBar($postID){
 }
 
 function shortcodeCaller( $atts ){
+    getBar_withLike($atts["postid"]);
+}
+
+function shortcodeCaller2( $atts ){
     getBar($atts["postid"]);
 }
 
-add_shortcode( 'bbpressliketopics', 'shortcodeCaller' );
+add_shortcode( 'bbpressliketopics_withlike', 'shortcodeCaller' );
+add_shortcode( 'bbpressliketopics', 'shortcodeCaller2' );
 
 
 function leoniBBPressLikeTopicsActivation() {
