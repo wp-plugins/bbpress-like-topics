@@ -4,7 +4,7 @@
  Plugin Name: Leoni BBPress Like Topics
  Plugin URI: http://www.eduardoleoni.com.br
  Description: Let members show their love to the topics they like
- Version: 0.1
+ Version: 0.2.1
  Author: Eduardo Leoni
  Author URI: http://www.eduardoleoni.com.br
  Text Domain: leoni-bbpress-like-topics
