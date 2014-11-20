@@ -1,10 +1,10 @@
 <?php
 
 /*
- Plugin Name: BBPress Like Topics
+ Plugin Name: bbPress Like Topics
  Plugin URI: http://www.eduardoleoni.com.br
  Description: Let members show their love to the topics they like
- Version: 0.2.1
+ Version: 0.2.1.1
  Author: Eduardo Leoni
  Author URI: http://www.eduardoleoni.com.br
  Text Domain: bbpress-like-topics
