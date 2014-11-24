@@ -15,9 +15,9 @@ Let your community members show their love by adding a like button to BBPress to
 
 == Installation ==
 
-Just use the shortcode [bbpressliketopics postID = <postID>] to show how many likes the post's got
-Just use the shortcode [bbpressliketopics_withlike postID = <postID>] to show how many likes the post's got and allow users to like it
-
+Just use the shortcode [bbpressliketopics postID = postID] to show how many likes the post's got <br/>
+Just use the shortcode [bbpressliketopics_withlike postID = postID] to show how many likes the post's got and allow users to like it<br/>
+Just use the shortcode [bbpresslikesonauthor author = authorID] to show how many likes the post's got and allow users to like it<br/>
 == Frequently Asked Questions ==
 
 
@@ -35,3 +35,5 @@ Just use the shortcode [bbpressliketopics_withlike postID = <postID>] to show ho
 * Organizational changes
 = 0.2.2 =
 * Name Changing
+= 0.3 = 
+* Shortcode for getting likes on author added
