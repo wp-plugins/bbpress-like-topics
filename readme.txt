@@ -41,3 +41,5 @@ Just use the shortcode [bbpresslikesonauthor author = authorID] to show how many
 * Name Changing
 = 0.3 = 
 * Shortcode for getting likes on author added
+= 0.4 =
+* Ajax support and check if user has already liked

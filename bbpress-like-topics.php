@@ -4,17 +4,19 @@
  Plugin Name: bbPress Like Topics
  Plugin URI: http://www.eduardoleoni.com.br
  Description: Let members show their love to the topics they like
- Version: 0.3
+ Version: 0.4
  Author: Eduardo Leoni
  Author URI: http://www.eduardoleoni.com.br
  Text Domain: bbpress-like-topics
  */
 
+
+/* OLD
 if (@$_GET["action"] == "like"){
     
     addToFavorites(get_current_user_id(), $_GET["post"]);
 }
-
+*/
 
 function addToFavorites($userID, $postID){
     
@@ -51,9 +53,13 @@ function getBar_withLike($postID){
         <span class ="likes_bbpress"> 
             <span class = "counter"><?php echo getFavorites($postID); ?></span>
             <?php if (!get_current_user_id()): ?>
-                <span class = "login_to_like"><a href = "#">Login to Like</a></span>
+                
             <?php else: ?>
-                <span class = "like"><a href = "?action=like&post=<?php echo $postID; ?>">Like</a></span>
+                <?php if (checkIfHasAlreadyLiked($postID)): ?>
+                    <span class = "like">Liked</span>
+                <?php else: ?>
+                    <span class = "like"><a href = "javascript: likeIt(<?php echo $postID; ?>);">Like</a></span>
+                <?php endif; ?>
             <?php endif; ?>
         </span>
     <?php
@@ -108,3 +114,42 @@ function leoniBBPressLikeTopicsActivation() {
 }
 
 register_activation_hook( __FILE__, 'leoniBBPressLikeTopicsActivation' );
+
+
+/*
+ * Ajax Support
+ */
+add_action('wp_enqueue_scripts', 'bbplt_ajax_handler');
+
+function bbplt_ajax_handler() {
+    
+    wp_enqueue_script('bbplt_ajax', plugins_url("bbpress-like-topics") . '/js/ajax.js', array('jquery'));
+    wp_localize_script('bbplt_ajax', 'bbplt_ajax', array(
+        'ajaxurl' => admin_url('admin-ajax.php'))
+    );
+}
+
+add_action('wp_ajax_likeIt', 'likeIt');
+add_action('wp_ajax_nopriv_likeIt', 'likeIt');
+function likeIt(){
+    
+    addToFavorites(get_current_user_id(), $_POST["post"]);
+    echo getFavorites($_POST["post"]);
+    exit;
+}
+
+
+function checkIfHasAlreadyLiked($postId){
+    
+    $userId = get_current_user_id();
+    global $wpdb;
+    $query = "SELECT * FROM " .$wpdb->prefix . "bbpress_likes WHERE post_id = '$postId' AND user_id = '$userId'";
+    $result = $wpdb->get_results($query);
+    
+    if (count($result) > 0){
+        return 1;
+    }else{
+        return 0;
+    }
+    
+}
