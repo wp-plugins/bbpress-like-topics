@@ -4,7 +4,7 @@
  Plugin Name: bbPress Like Topics
  Plugin URI: http://www.eduardoleoni.com.br
  Description: Let members show their love to the topics they like
- Version: 0.4
+ Version: 1.0
  Author: Eduardo Leoni
  Author URI: http://www.eduardoleoni.com.br
  Text Domain: bbpress-like-topics
@@ -23,6 +23,14 @@ function addToFavorites($userID, $postID){
     global $wpdb;
     
     $wpdb->insert($wpdb->prefix . "bbpress_likes", array("post_id"=>$postID, "user_id"=>$userID));
+  
+}
+
+function removeFromFavorites($userID, $postID){
+    
+    global $wpdb;
+    
+    $wpdb->get_results("DELETE FROM " . $wpdb->prefix . "bbpress_likes WHERE post_id = '$postID' AND user_id = '$userID'");
   
 }
 
@@ -51,14 +59,14 @@ function getBar_withLike($postID){
    
     ?>
         <span class ="likes_bbpress"> 
-            <span class = "counter"><?php echo getFavorites($postID); ?></span>
+            <span class = "counter" id = "<?php echo $postID; ?>"><?php echo getFavorites($postID); ?></span>
             <?php if (!get_current_user_id()): ?>
                 
             <?php else: ?>
                 <?php if (checkIfHasAlreadyLiked($postID)): ?>
-                    <span class = "like">Liked</span>
+                    <span class = "like like_<?php echo $postID; ?>"><a href = "javascript: unlikeIt(<?php echo $postID; ?>);">Unlike</span>
                 <?php else: ?>
-                    <span class = "like"><a href = "javascript: likeIt(<?php echo $postID; ?>);">Like</a></span>
+                    <span class = "like like_<?php echo $postID; ?>"><a href = "javascript: likeIt(<?php echo $postID; ?>);">Like</a></span>
                 <?php endif; ?>
             <?php endif; ?>
         </span>
@@ -138,6 +146,14 @@ function likeIt(){
     exit;
 }
 
+add_action('wp_ajax_unlikeIt', 'unlikeIt');
+add_action('wp_ajax_nopriv_unlikeIt', 'unlikeIt');
+function unlikeIt(){
+    
+    removeFromFavorites(get_current_user_id(), $_POST["post"]);
+    echo getFavorites($_POST["post"]);
+    exit;
+}
 
 function checkIfHasAlreadyLiked($postId){
     

@@ -2,7 +2,7 @@
 Contributors: eduardo-leoni
 Tags: BBPress, Likes, Topics
 Requires at least: 3.5.1
-Tested up to: 4.0
+Tested up to: 4.1
 Stable tag: 4.0
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
@@ -11,7 +11,7 @@ Let members show their love to the topics they like most
 
 == Description ==
 
-Let your community members show their love by adding a like button to BBPress topics
+Let your community members show their love by adding a like button to BBPress topics. Instalation takes a few minutes, just throw the shortcode there!
 
 == Installation ==
 
@@ -43,3 +43,5 @@ Just use the shortcode [bbpresslikesonauthor author = authorID] to show how many
 * Shortcode for getting likes on author added
 = 0.4 =
 * Ajax support and check if user has already liked
+= 1.0 =
+* Incessantly tested, unlike functionality added, support to more than one per page.
