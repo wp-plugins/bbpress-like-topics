@@ -1,9 +1,9 @@
 === bbPress Like Topics ===
 Contributors: eduardo-leoni
-Tags: BBPress, Likes, Topics
+Tags: BBPress, Likes, Topics, Ajax
 Requires at least: 3.5.1
 Tested up to: 4.1
-Stable tag: 4.0
+Stable tag: 4.1
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -23,6 +23,8 @@ Just use the shortcode [bbpresslikesonauthor author = authorID] to show how many
 
 
 == Frequently Asked Questions ==
+= How do I install it? =
+Check the shortcodes at the installation tab.
 
 
 
@@ -45,3 +47,5 @@ Just use the shortcode [bbpresslikesonauthor author = authorID] to show how many
 * Ajax support and check if user has already liked
 = 1.0 =
 * Incessantly tested, unlike functionality added, support to more than one per page.
+= 1.1 =
+* More than one of the same bug fix

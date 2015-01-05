@@ -5,13 +5,13 @@ function likeIt(postId){
         type: "POST",
         data: ({
             action : 'likeIt',
-            post: postId,
+            post: postId
         }),
         beforeSend: function(){
            
         },
         success: function(data) {
-            $(".counter#"+postId).html(data);
+            $(".counter_"+postId).html(data);
             $(".like_"+postId).html("<a href = 'javascript: unlikeIt("+postId+")'>Unlike</a>");
 
         }
@@ -25,13 +25,13 @@ function unlikeIt(postId){
         type: "POST",
         data: ({
             action : 'unlikeIt',
-            post: postId,
+            post: postId
         }),
         beforeSend: function(){
            
         },
         success: function(data) {
-            $(".counter#"+postId).html(data);
+            $(".counter_"+postId).html(data);
             $(".like_"+postId).html("<a href = 'javascript: likeIt("+postId+")'>Like</a>");
 
         }
