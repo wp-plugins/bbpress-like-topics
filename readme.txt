@@ -21,6 +21,7 @@ Just use the shortcode [bbpressliketopics_withlike postID = postID] to show how 
 
 Just use the shortcode [bbpresslikesonauthor author = authorID] to show how many likes the post's got and allow users to like it 
 
+Just use the shortcode [bbpressmostliked qty = qty] to show the most liked topics in a list
 
 == Frequently Asked Questions ==
 = How do I install it? =
@@ -49,3 +50,5 @@ Check the shortcodes at the installation tab.
 * Incessantly tested, unlike functionality added, support to more than one per page.
 = 1.1 =
 * More than one of the same bug fix
+= 1.2 =
+* List most liked topics

@@ -3,7 +3,7 @@
  Plugin Name: bbPress Like Topics
  Plugin URI: http://www.eduardoleoni.com.br
  Description: Let members show their love to the topics they like
- Version: 1.1
+ Version: 1.2
  Author: Eduardo Leoni
  Author URI: http://www.eduardoleoni.com.br
  Text Domain: bbpress-like-topics
@@ -103,9 +103,15 @@ function shortcodeCaller3( $atts ){
     getLikesOnAuthorPosts($atts["author"]);
 }
 
+function shortcodeCaller4( $atts ){
+    getMostLikedTopics($atts["qty"]);
+}
+
 add_shortcode( 'bbpressliketopics_withlike', 'shortcodeCaller' );
 add_shortcode( 'bbpressliketopics', 'shortcodeCaller2' );
 add_shortcode( 'bbpresslikesonauthor', 'shortcodeCaller3' );
+add_shortcode( 'bbpressmostliked', 'shortcodeCaller4' );
+
 
 function leoniBBPressLikeTopicsActivation() {
 
@@ -167,4 +173,30 @@ function checkIfHasAlreadyLiked($postId){
         return 0;
     }
     
+}
+
+function getMostLikedTopics(){
+    
+    global $wpdb;
+    $query = "SELECT 
+                likes.post_id, COUNT(likes.post_id) as count 
+              FROM " .$wpdb->prefix . "bbpress_likes as likes
+              INNER JOIN
+                " .$wpdb->prefix . "posts as posts
+              ON
+                posts.id = likes.post_id
+              WHERE 
+                posts.post_type = 'topic'
+              GROUP BY 
+                likes.post_id 
+              ORDER BY 
+                count DESC";
+    $result = $wpdb->get_results($query);
+    ?>
+    <ul>
+        <?php foreach ($result as $post): ?>
+            <li><a href="<?php echo get_permalink($post->post_id); ?>" title="<?php echo get_the_title($post->post_id); ?>"><?php echo get_the_title($post->post_id); ?></a></li>
+        <?php endforeach; ?>
+    </ul>
+    <?php
 }
