@@ -11,7 +11,7 @@ function likeIt(postId){
            
         },
         success: function(data) {
-            jQuery(".counter_"+postId).html(data);
+            jQuery(".counter_"+postId).html(data + " likes");
             jQuery(".like_"+postId).html("<a href = 'javascript: unlikeIt("+postId+")'>Unlike</a>");
 
         }
@@ -31,7 +31,7 @@ function unlikeIt(postId){
            
         },
         success: function(data) {
-            jQuery(".counter_"+postId).html(data);
+            jQuery(".counter_"+postId).html(data + " likes");
             jQuery(".like_"+postId).html("<a href = 'javascript: likeIt("+postId+")'>Like</a>");
 
         }
