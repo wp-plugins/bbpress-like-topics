@@ -3,7 +3,7 @@
  Plugin Name: bbPress Like Topics
  Plugin URI: http://www.eduardoleoni.com.br
  Description: Let members show their love to the topics they like
- Version: 1.2
+ Version: 1.3
  Author: Eduardo Leoni
  Author URI: http://www.eduardoleoni.com.br
  Text Domain: bbpress-like-topics
@@ -63,9 +63,9 @@ function getBar_withLike($postID){
                 
             <?php else: ?>
                 <?php if (checkIfHasAlreadyLiked($postID)): ?>
-                    <span class = "like like_<?php echo $postID; ?>"><a href = "javascript: unlikeIt(<?php echo $postID; ?>);">Unlike</span>
+                    <span class = "like like_<?php echo $postID; ?>"> Likes (<a href = "javascript: unlikeIt(<?php echo $postID; ?>);">Unlike</a>)</span>
                 <?php else: ?>
-                    <span class = "like like_<?php echo $postID; ?>"><a href = "javascript: likeIt(<?php echo $postID; ?>);">Like</a></span>
+                    <span class = "like like_<?php echo $postID; ?>"> Likes (<a href = "javascript: likeIt(<?php echo $postID; ?>);">Like</a>)</span>
                 <?php endif; ?>
             <?php endif; ?>
         </span>
@@ -200,3 +200,5 @@ function getMostLikedTopics(){
     </ul>
     <?php
 }
+
+wp_enqueue_script('jquery');

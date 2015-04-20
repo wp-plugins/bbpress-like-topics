@@ -2,8 +2,8 @@
 Contributors: eduardo-leoni
 Tags: BBPress, Likes, Topics, Ajax
 Requires at least: 3.5.1
-Tested up to: 4.1
-Stable tag: 4.1
+Tested up to: 4.1.1
+Stable tag: 4.1.1
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -19,7 +19,7 @@ Just use the shortcode [bbpressliketopics postID = postID] to show how many like
 
 Just use the shortcode [bbpressliketopics_withlike postID = postID] to show how many likes the post's got and allow users to like it
 
-Just use the shortcode [bbpresslikesonauthor author = authorID] to show how many likes the post's got and allow users to like it 
+Just use the shortcode [bbpresslikesonauthor author = authorID] to show how many likes an author's got
 
 Just use the shortcode [bbpressmostliked qty = qty] to show the most liked topics in a list
 
@@ -52,3 +52,5 @@ Check the shortcodes at the installation tab.
 * More than one of the same bug fix
 = 1.2 =
 * List most liked topics
+= 1.3 =
+* JQuery compatibility issues fixed

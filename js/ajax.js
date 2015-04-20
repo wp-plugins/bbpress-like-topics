@@ -1,6 +1,6 @@
 function likeIt(postId){
     
-    $.ajax({
+    jQuery.ajax({
         url: bbplt_ajax.ajaxurl,
         type: "POST",
         data: ({
@@ -11,8 +11,8 @@ function likeIt(postId){
            
         },
         success: function(data) {
-            $(".counter_"+postId).html(data);
-            $(".like_"+postId).html("<a href = 'javascript: unlikeIt("+postId+")'>Unlike</a>");
+            jQuery(".counter_"+postId).html(data);
+            jQuery(".like_"+postId).html("<a href = 'javascript: unlikeIt("+postId+")'>Unlike</a>");
 
         }
     });
@@ -20,7 +20,7 @@ function likeIt(postId){
 
 function unlikeIt(postId){
     
-    $.ajax({
+    jQuery.ajax({
         url: bbplt_ajax.ajaxurl,
         type: "POST",
         data: ({
@@ -31,8 +31,8 @@ function unlikeIt(postId){
            
         },
         success: function(data) {
-            $(".counter_"+postId).html(data);
-            $(".like_"+postId).html("<a href = 'javascript: likeIt("+postId+")'>Like</a>");
+            jQuery(".counter_"+postId).html(data);
+            jQuery(".like_"+postId).html("<a href = 'javascript: likeIt("+postId+")'>Like</a>");
 
         }
     });
