@@ -3,7 +3,7 @@
  Plugin Name: bbPress Like Topics
  Plugin URI: http://www.eduardoleoni.com.br
  Description: Let members show their love to the topics they like
- Version: 1.3
+ Version: 1.2
  Author: Eduardo Leoni
  Author URI: http://www.eduardoleoni.com.br
  Text Domain: bbpress-like-topics
@@ -107,11 +107,16 @@ function shortcodeCaller4( $atts ){
     getMostLikedTopics($atts["qty"]);
 }
 
+function shortcodeCaller5( $atts ){
+    
+    getRecentPostsLikedByUser_bar($atts["userid"]);
+}
+
 add_shortcode( 'bbpressliketopics_withlike', 'shortcodeCaller' );
 add_shortcode( 'bbpressliketopics', 'shortcodeCaller2' );
 add_shortcode( 'bbpresslikesonauthor', 'shortcodeCaller3' );
 add_shortcode( 'bbpressmostliked', 'shortcodeCaller4' );
-
+add_shortcode( 'bbpressrecentlylikedbyuser', 'shortcodeCaller5' );
 
 function leoniBBPressLikeTopicsActivation() {
 
@@ -202,3 +207,32 @@ function getMostLikedTopics(){
 }
 
 wp_enqueue_script('jquery');
+
+
+function getRecentPostsLikedByUser($userId){
+    
+    global $wpdb;
+    $query = "SELECT * FROM " . $wpdb->prefix . "bbpress_likes WHERE user_id = '$userId' ORDER BY id DESC LIMIT 10";
+    
+    $results = $wpdb->get_results($query);
+    
+    return $results;
+}
+
+function getRecentPostsLikedByUser_bar($userId){
+    
+    $recent = getRecentPostsLikedByUser($userId);
+    if (count($recent) > 0){
+        ?>
+        <ul>
+            <?php
+            foreach ($recent as $each){
+
+                ?><li><a href = "<?php echo get_permalink($each->post_id); ?>"><?php echo get_the_title($each->post_id); ?></a></li><?php
+
+            }
+            ?> 
+        </ul> 
+        <?php
+    }
+}

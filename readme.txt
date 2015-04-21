@@ -15,13 +15,16 @@ Let your community members show their love by adding a like button to BBPress to
 
 == Installation ==
 
-Just use the shortcode [bbpressliketopics postID = postID] to show how many likes the post's got
+Use the shortcode [bbpressliketopics postID = postID] to show how many likes the post's got, overwrite the second "postID" by the post id
 
-Just use the shortcode [bbpressliketopics_withlike postID = postID] to show how many likes the post's got and allow users to like it
+Use the shortcode [bbpressliketopics_withlike postID = postID] to show how many likes the post's got and allow users to like it, overwrite the second "postID" by the post id to be liked
 
-Just use the shortcode [bbpresslikesonauthor author = authorID] to show how many likes an author's got
+Use the shortcode [bbpresslikesonauthor author = authorID] to show how many likes the post's got and allow users to like it, overwrite the "authorID" by the user id to be shown
 
-Just use the shortcode [bbpressmostliked qty = qty] to show the most liked topics in a list
+Use the shortcode [bbpressmostliked qty = qty] to show the most liked topics in a list, overwrite the second "qty" for a number to specify the quantity.
+
+Use the shortcode [bbpressrecentlylikedbyuser userId = userId] to show the most liked topics in a list, overwrite the second "userId" by the user id to be shown.
+
 
 == Frequently Asked Questions ==
 = How do I install it? =
@@ -54,3 +57,5 @@ Check the shortcodes at the installation tab.
 * List most liked topics
 = 1.3 =
 * JQuery compatibility issues fixed
+= 1.4 =
+* Now it's possible to show the posts the user recently liked
